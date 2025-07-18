@@ -1,0 +1,1 @@
+WeConnect is a real-time social networking application that allows users to send messages, share images, record voice messages, and make peer-to-peer video calls. Built with Spring Boot and WebSocket on the backend, and React for the frontend, this project demonstrates modern fullstack development with real-time communication features.
