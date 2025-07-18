@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.findAll();
     }
     public User getUser(String id){
-        return userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found with id: " + id));
+        return userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found with id"));
     }
     public User updateUser(String id,UserCreationRequest request){
         User user = getUser(id);
