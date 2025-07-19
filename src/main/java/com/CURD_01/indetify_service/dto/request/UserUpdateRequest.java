@@ -1,25 +1,12 @@
-package dto.request;
-
-import jakarta.validation.constraints.Size;
+package com.CURD_01.indetify_service.dto.request;
 
 import java.time.LocalDate;
 
-public class UserCreationRequest {
-    private String username;
-    @Size(min = 8, max = 20,message = "Password must be between 8 and 20 characters")
+public class UserUpdateRequest {
     private  String password;
     private  String firstname;
     private  String lastname;
     private LocalDate dob;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }

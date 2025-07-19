@@ -2,6 +2,7 @@ package com.CURD_01.indetify_service.Controller;
 
 import com.CURD_01.indetify_service.entity.User;
 import com.CURD_01.indetify_service.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody dto.request.UserCreationRequest request){
+    User createUser(@RequestBody @Valid dto.request.UserCreationRequest request){
         return userService.createUser(request);
     }
     @GetMapping
@@ -31,6 +32,7 @@ public class UserController {
         }
     @PutMapping("/{id}")
       User updateUser(@PathVariable("id") String id,@RequestBody dto.request.UserCreationRequest request){
+
         return userService.updateUser(id, request);
     }
     @DeleteMapping("/{id}")
