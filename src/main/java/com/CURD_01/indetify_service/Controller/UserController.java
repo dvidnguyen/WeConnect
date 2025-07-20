@@ -1,5 +1,6 @@
 package com.CURD_01.indetify_service.Controller;
 
+import com.CURD_01.indetify_service.dto.request.ApiResponse;
 import com.CURD_01.indetify_service.entity.User;
 import com.CURD_01.indetify_service.service.UserService;
 import jakarta.validation.Valid;
@@ -19,8 +20,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody @Valid dto.request.UserCreationRequest request){
-        return userService.createUser(request);
+    ApiResponse<User> createUser(@RequestBody @Valid dto.request.UserCreationRequest request){
+        ApiResponse<User> apiResponse = new ApiResponse<>();
+        apiResponse.setData(userService.createUser(request));
+        return apiResponse;
     }
     @GetMapping
     List<User> getUsers() {
