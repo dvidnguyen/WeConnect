@@ -1,6 +1,8 @@
 package com.CURD_01.indetify_service.service;
 
 import com.CURD_01.indetify_service.entity.User;
+import com.CURD_01.indetify_service.exception.AppException;
+import com.CURD_01.indetify_service.exception.ErrorCode;
 import com.CURD_01.indetify_service.repository.UserRepository;
 import dto.request.UserCreationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ public class UserService {
     private UserRepository userRepository;
     public User createUser(UserCreationRequest request) {
         if(userRepository.existsByUsername(request.getUsername()))
-            throw new RuntimeException("Username is existed!");
+            throw new AppException(ErrorCode.USER_EXISTED);
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
@@ -31,7 +33,7 @@ public class UserService {
         return userRepository.findAll();
     }
     public User getUser(String id){
-        return userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found with id"));
+        return userRepository.findById(id).orElseThrow(()-> new AppException(ErrorCode.USER_EXISTED));
     }
     public User updateUser(String id,UserCreationRequest request){
         User user = getUser(id);
